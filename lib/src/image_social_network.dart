@@ -39,10 +39,9 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
   @override
   Widget build(BuildContext context) {
     if (urls.isEmpty) return const SizedBox();
-    return Container(
+    return SizedBox(
       height: widget.size,
       width: double.infinity,
-      margin: const EdgeInsets.all(Dimens.mPadding),
       child: _builder(context),
     );
   }
