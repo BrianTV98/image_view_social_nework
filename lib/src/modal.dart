@@ -42,6 +42,9 @@ class HeroDialogRoute<T> extends PageRoute<T> {
           backgroundColor: Colors.black,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
+            iconTheme: const IconThemeData(
+              color: Colors.white, //change your color here
+            ),
             elevation: 0,
           ),
           body: Center(child: child)
