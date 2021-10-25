@@ -1,18 +1,15 @@
-library image_social_network;
+import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:image_social_network/src/border_image.dart';
-import 'package:image_social_network/src/modal.dart';
 import 'package:image_social_network/utils/dimens.dart';
-import 'package:photo_view/photo_view.dart';
 
-class ImageSocialNetwork extends StatefulWidget {
-  const ImageSocialNetwork({required this.urls,
-    this.size = 250, Key? key})
+class ImageLocal extends StatefulWidget {
+  const ImageLocal({required this.files, this.size = 250, Key? key})
       : super(key: key);
 
-  final List<String> urls;
+  final List<XFile> files;
 
   final double size;
 
@@ -20,13 +17,13 @@ class ImageSocialNetwork extends StatefulWidget {
   _ImageSocialNetworkState createState() => _ImageSocialNetworkState();
 }
 
-class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
-  late List<String> urls;
+class _ImageSocialNetworkState extends State<ImageLocal> {
+  late List<XFile> urls;
 
   @override
   void initState() {
     // TODO: implement initState
-    urls = widget.urls;
+    urls = widget.files;
     super.initState();
   }
 
@@ -59,15 +56,16 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
       case 2:
         return Row(
           children: [
-            BorderImage(alignment: Alignment.centerLeft,
-                onPress: ()=>openDialog(0),
+            BorderImage(
+                alignment: Alignment.centerLeft,
+                onPress: () => openDialog(0),
                 child: imageItem(0)),
             const SizedBox(
               width: 2,
             ),
             BorderImage(
                 alignment: Alignment.centerRight,
-                onPress: ()=>openDialog(1),
+                onPress: () => openDialog(1),
                 child: imageItem(1)),
           ],
         );
@@ -77,14 +75,16 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
             Expanded(
                 child: Row(
               children: [
-                BorderImage(alignment: Alignment.topLeft,
-                    onPress: ()=>openDialog(0),
+                BorderImage(
+                    alignment: Alignment.topLeft,
+                    onPress: () => openDialog(0),
                     child: imageItem(0)),
                 const SizedBox(
                   width: 2,
                 ),
-                BorderImage(alignment: Alignment.topRight,
-                    onPress: ()=>openDialog(1),
+                BorderImage(
+                    alignment: Alignment.topRight,
+                    onPress: () => openDialog(1),
                     child: imageItem(1)),
               ],
             )),
@@ -93,9 +93,8 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
             ),
             BorderImage(
                 alignment: Alignment.bottomCenter,
-                onPress: ()=>openDialog(2),
-                child: imageItem(2)
-            ),
+                onPress: () => openDialog(2),
+                child: imageItem(2)),
           ],
         );
 
@@ -107,14 +106,14 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
               children: [
                 BorderImage(
                     alignment: Alignment.topLeft,
-                    onPress: ()=>openDialog(0),
+                    onPress: () => openDialog(0),
                     child: imageItem(0)),
                 const SizedBox(
                   width: 2,
                 ),
                 BorderImage(
                     alignment: Alignment.topRight,
-                    onPress: ()=>openDialog(1),
+                    onPress: () => openDialog(1),
                     child: imageItem(1)),
               ],
             )),
@@ -126,14 +125,14 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
               children: [
                 BorderImage(
                     alignment: Alignment.bottomLeft,
-                    onPress: ()=>openDialog(2),
+                    onPress: () => openDialog(2),
                     child: imageItem(2)),
                 const SizedBox(
                   width: 2,
                 ),
                 BorderImage(
                     alignment: Alignment.bottomRight,
-                    onPress: ()=>openDialog(3),
+                    onPress: () => openDialog(3),
                     child: imageItem(3)),
               ],
             ))
@@ -147,14 +146,14 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
               children: [
                 BorderImage(
                     alignment: Alignment.topLeft,
-                    onPress: ()=>openDialog(0),
+                    onPress: () => openDialog(0),
                     child: imageItem(0)),
                 const SizedBox(
                   width: 2,
                 ),
                 BorderImage(
                     alignment: Alignment.topRight,
-                    onPress: ()=>openDialog(1),
+                    onPress: () => openDialog(1),
                     child: imageItem(1)),
               ],
             )),
@@ -166,18 +165,21 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
               children: [
                 BorderImage(
                     alignment: Alignment.bottomLeft,
-                    onPress: ()=>openDialog(2),
+                    onPress: () => openDialog(2),
                     child: imageItem(2)),
                 const SizedBox(
                   width: 2,
                 ),
-                BorderImage(child: imageItem(3),onPress: ()=>openDialog(3),),
+                BorderImage(
+                  child: imageItem(3),
+                  onPress: () => openDialog(3),
+                ),
                 const SizedBox(
                   width: 2,
                 ),
                 BorderImage(
                     alignment: Alignment.bottomRight,
-                    onPress: ()=>openDialog(4),
+                    onPress: () => openDialog(4),
                     child: imageItem(4)),
               ],
             ))
@@ -190,14 +192,16 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
             Expanded(
                 child: Row(
               children: [
-                BorderImage(alignment: Alignment.topLeft,
-                    onPress: ()=>openDialog(0),
+                BorderImage(
+                    alignment: Alignment.topLeft,
+                    onPress: () => openDialog(0),
                     child: imageItem(0)),
                 const SizedBox(
                   width: 2,
                 ),
-                BorderImage(alignment: Alignment.topRight,
-                    onPress: ()=>openDialog(1),
+                BorderImage(
+                    alignment: Alignment.topRight,
+                    onPress: () => openDialog(1),
                     child: imageItem(1)),
               ],
             )),
@@ -209,18 +213,21 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
               children: [
                 BorderImage(
                     alignment: Alignment.bottomLeft,
-                    onPress: ()=>openDialog(2),
+                    onPress: () => openDialog(2),
                     child: imageItem(2)),
                 const SizedBox(
                   width: 2,
                 ),
-                BorderImage(child: imageItem(3),onPress: ()=>openDialog(3),),
+                BorderImage(
+                  child: imageItem(3),
+                  onPress: () => openDialog(3),
+                ),
                 const SizedBox(
                   width: 2,
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onDoubleTap: ()=>openDialog(4),
+                    onDoubleTap: () => openDialog(4),
                     behavior: HitTestBehavior.translucent,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -248,35 +255,28 @@ class _ImageSocialNetworkState extends State<ImageSocialNetwork> {
   }
 
   Widget imageItem(int index) {
-    return CachedNetworkImage(
+    return Image.file(
+      File(widget.files[index].path),
       alignment: Alignment.center,
       fit: BoxFit.cover,
-      imageUrl: urls[index],
-      height: double.infinity,
-      width: double.infinity,
-      errorWidget: (_, __, ___) => Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.grey,
-      ),
     );
   }
 
   openDialog(int i) {
-    Navigator.of(context).push(
-      HeroDialogRoute<void>(
-          // DisplayGesture is just debug, please remove it when use
-          builder: (BuildContext context) {
-        return PageView.builder(
-            controller: PageController(initialPage: i),
-            itemCount: urls.length,
-            itemBuilder: (context, index) {
-              return PhotoView.customChild(
-                  child: CachedNetworkImage(
-                imageUrl: urls[index],
-              ));
-            });
-      }),
-    );
+    // Navigator.of(context).push(
+    //   HeroDialogRoute<void>(
+    //     // DisplayGesture is just debug, please remove it when use
+    //       builder: (BuildContext context) {
+    //         return PageView.builder(
+    //             controller: PageController(initialPage: i),
+    //             itemCount: urls.length,
+    //             itemBuilder: (context, index) {
+    //               return PhotoView.customChild(
+    //                   child: CachedNetworkImage(
+    //                     imageUrl: urls[index],
+    //                   ));
+    //             });
+    //       }),
+    // );
   }
 }
