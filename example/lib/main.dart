@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:image_social_network/self.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,8 +31,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ImagePicker _picker = ImagePicker();
+
+  List<XFile> images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +82,40 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: ListView.builder(
-          itemCount: urls.length,
-          itemBuilder: (context, index){
-            return ImageSocialNetwork(urls: urls[index],);
-          }),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ListView.builder(
+                    itemCount: urls.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ImageSocialNetwork(
+                        urls: urls[index],
+                      );
+                    }),
+                ImageLocal(
+                  files: images,
+                  onDelete: (index) {
+                    images.removeAt(index);
+                    setState(() {});
+                  },
+                ),
+                IconButton(onPressed: () => pickImage(), icon: Icon(Icons.add))
+              ],
+            ),
+          ),
+        ),
+      ),
     );
+  }
+
+  void pickImage() async {
+    List<XFile>? files = await _picker.pickMultiImage();
+    if (files != null) images.addAll(files);
+    debugPrint(files?.length.toString());
+    setState(() {});
   }
 }

@@ -259,28 +259,28 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
   }
 
   Widget imageItem(int index) {
-    return SizedBox(
-      child: Stack(
-        children: [
-          Image.file(
-            File(widget.files[index].path),
-            alignment: Alignment.center,
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-
-          Align(
-              alignment: Alignment.topRight,
-              child: IconButton(onPressed: ()=>widget.onDelete(index),
-                  icon: const Icon(Icons.cancel)
-              )
-          )
-
-        ],
-      ),
+    return Stack(
+      children: [
+        Image.file(
+          File(widget.files[index].path),
+          alignment: Alignment.center,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
+        ),
+        Align(
+            alignment: Alignment.topRight,
+            child: IconButton(onPressed: () => widget.onDelete(index),
+                icon: const Icon(Icons.cancel)
+            ))
+      ],
     );
   }
+
+  // Widget acd() {
+  //   return
+  //   );
+  // }
 
 
   openDialog(int i) {
