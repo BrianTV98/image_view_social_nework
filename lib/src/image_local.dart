@@ -271,7 +271,7 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
 
           Align(
               alignment: Alignment.topRight,
-              child: IconButton(onPressed: widget.onDelete(index),
+              child: IconButton(onPressed: ()=>widget.onDelete(index),
                   icon: const Icon(Icons.cancel)
               )
           )
