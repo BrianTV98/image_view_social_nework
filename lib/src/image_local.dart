@@ -13,7 +13,7 @@ class ImageLocal extends StatefulWidget {
 
   final List<XFile> files;
 
-  final VoidCallback onDelete;
+  final Function(int index) onDelete;
 
   final double size;
 
@@ -78,20 +78,20 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
           children: [
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.topLeft,
-                    onPress: () => openDialog(0),
-                    child: imageItem(0)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.topRight,
-                    onPress: () => openDialog(1),
-                    child: imageItem(1)),
-              ],
-            )),
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.topLeft,
+                        onPress: () => openDialog(0),
+                        child: imageItem(0)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.topRight,
+                        onPress: () => openDialog(1),
+                        child: imageItem(1)),
+                  ],
+                )),
             const SizedBox(
               height: 2,
             ),
@@ -107,39 +107,39 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
           children: [
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.topLeft,
-                    onPress: () => openDialog(0),
-                    child: imageItem(0)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.topRight,
-                    onPress: () => openDialog(1),
-                    child: imageItem(1)),
-              ],
-            )),
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.topLeft,
+                        onPress: () => openDialog(0),
+                        child: imageItem(0)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.topRight,
+                        onPress: () => openDialog(1),
+                        child: imageItem(1)),
+                  ],
+                )),
             const SizedBox(
               height: 2,
             ),
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.bottomLeft,
-                    onPress: () => openDialog(2),
-                    child: imageItem(2)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.bottomRight,
-                    onPress: () => openDialog(3),
-                    child: imageItem(3)),
-              ],
-            ))
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.bottomLeft,
+                        onPress: () => openDialog(2),
+                        child: imageItem(2)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.bottomRight,
+                        onPress: () => openDialog(3),
+                        child: imageItem(3)),
+                  ],
+                ))
           ],
         );
       case 5:
@@ -147,46 +147,46 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
           children: [
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.topLeft,
-                    onPress: () => openDialog(0),
-                    child: imageItem(0)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.topRight,
-                    onPress: () => openDialog(1),
-                    child: imageItem(1)),
-              ],
-            )),
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.topLeft,
+                        onPress: () => openDialog(0),
+                        child: imageItem(0)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.topRight,
+                        onPress: () => openDialog(1),
+                        child: imageItem(1)),
+                  ],
+                )),
             const SizedBox(
               height: 2,
             ),
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.bottomLeft,
-                    onPress: () => openDialog(2),
-                    child: imageItem(2)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                  child: imageItem(3),
-                  onPress: () => openDialog(3),
-                ),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.bottomRight,
-                    onPress: () => openDialog(4),
-                    child: imageItem(4)),
-              ],
-            ))
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.bottomLeft,
+                        onPress: () => openDialog(2),
+                        child: imageItem(2)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                      child: imageItem(3),
+                      onPress: () => openDialog(3),
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.bottomRight,
+                        onPress: () => openDialog(4),
+                        child: imageItem(4)),
+                  ],
+                ))
           ],
         );
 
@@ -195,64 +195,64 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
           children: [
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.topLeft,
-                    onPress: () => openDialog(0),
-                    child: imageItem(0)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                    alignment: Alignment.topRight,
-                    onPress: () => openDialog(1),
-                    child: imageItem(1)),
-              ],
-            )),
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.topLeft,
+                        onPress: () => openDialog(0),
+                        child: imageItem(0)),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    BorderImage(
+                        alignment: Alignment.topRight,
+                        onPress: () => openDialog(1),
+                        child: imageItem(1)),
+                  ],
+                )),
             const SizedBox(
               height: 2,
             ),
             Expanded(
                 child: Row(
-              children: [
-                BorderImage(
-                    alignment: Alignment.bottomLeft,
-                    onPress: () => openDialog(2),
-                    child: imageItem(2)),
-                const SizedBox(
-                  width: 2,
-                ),
-                BorderImage(
-                  child: imageItem(3),
-                  onPress: () => openDialog(3),
-                ),
-                const SizedBox(
-                  width: 2,
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onDoubleTap: () => openDialog(4),
-                    behavior: HitTestBehavior.translucent,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(Dimens.lPadding)),
-                      child: Stack(children: [
-                        imageItem(4),
-                        Center(
-                          child: Text(
-                            '+${urls.length - 5}',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        )
-                      ]),
+                  children: [
+                    BorderImage(
+                        alignment: Alignment.bottomLeft,
+                        onPress: () => openDialog(2),
+                        child: imageItem(2)),
+                    const SizedBox(
+                      width: 2,
                     ),
-                  ),
-                )
-              ],
-            ))
+                    BorderImage(
+                      child: imageItem(3),
+                      onPress: () => openDialog(3),
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onDoubleTap: () => openDialog(4),
+                        behavior: HitTestBehavior.translucent,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              bottomRight: Radius.circular(Dimens.lPadding)),
+                          child: Stack(children: [
+                            imageItem(4),
+                            Center(
+                              child: Text(
+                                '+${urls.length - 5}',
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )
+                          ]),
+                        ),
+                      ),
+                    )
+                  ],
+                ))
           ],
         );
     }
@@ -270,17 +270,20 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
           ),
 
           Align(
-            alignment: Alignment.topRight,
-            child:deleteButton(),
+              alignment: Alignment.topRight,
+              child: IconButton(onPressed: widget.onDelete(index),
+                  icon: const Icon(Icons.cancel)
+              )
           )
+
         ],
       ),
     );
   }
 
-  Widget deleteButton(){
-     return IconButton(onPressed: ()=> widget.onDelete,
-         icon: const Icon(Icons.cancel));
+  Widget deleteButton(int de) {
+    return
+    );
   }
 
   openDialog(int i) {
