@@ -260,14 +260,14 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
 
   Widget imageItem(int index) {
     return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
       child: Stack(
         children: [
           Image.file(
             File(widget.files[index].path),
             alignment: Alignment.center,
             fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
 
           Align(
