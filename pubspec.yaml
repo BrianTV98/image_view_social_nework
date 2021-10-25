@@ -1,6 +1,6 @@
 name: image_social_network
 description: Show multi images the same as facebook social network
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
