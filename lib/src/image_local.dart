@@ -281,10 +281,6 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
     );
   }
 
-  Widget deleteButton(int de) {
-    return
-    );
-  }
 
   openDialog(int i) {
     // Navigator.of(context).push(
