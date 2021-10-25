@@ -6,10 +6,14 @@ import 'package:image_social_network/src/border_image.dart';
 import 'package:image_social_network/utils/dimens.dart';
 
 class ImageLocal extends StatefulWidget {
-  const ImageLocal({required this.files, this.size = 250, Key? key})
+  const ImageLocal({required this.files,
+    required this.onDelete,
+    this.size = 250, Key? key})
       : super(key: key);
 
   final List<XFile> files;
+
+  final VoidCallback onDelete;
 
   final double size;
 
@@ -255,11 +259,28 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
   }
 
   Widget imageItem(int index) {
-    return Image.file(
-      File(widget.files[index].path),
-      alignment: Alignment.center,
-      fit: BoxFit.cover,
+    return SizedBox(
+      child: Stack(
+        children: [
+
+          Image.file(
+            File(widget.files[index].path),
+            alignment: Alignment.center,
+            fit: BoxFit.cover,
+          ),
+
+          Align(
+            alignment: Alignment.topRight,
+            child:deleteButton(),
+          )
+        ],
+      ),
     );
+  }
+
+  Widget deleteButton(){
+     return IconButton(onPressed: ()=> widget.onDelete,
+         icon: const Icon(Icons.cancel));
   }
 
   openDialog(int i) {
