@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:image_social_network/self.dart';
 
 void main() {
@@ -41,9 +41,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ImagePicker _picker = ImagePicker();
 
-  List<XFile> images = [];
+  List<File> images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //       );
                 //     }),
                 ImageLocal(
-                  files: [File('/data/user/0/vn.com.acsvn.app_nhg/cache/file_picker/20211206_224350.jpg')],
+                  files: images,
                   onDelete: (index) {
                     images.removeAt(index);
                     setState(() {});
@@ -115,9 +114,68 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void pickImage() async {
-    // List<File>? files = await _picker.pickMultiImage();
-    // if (files != null) images.addAll(files);
-    // debugPrint(files?.length.toString());
-    // setState(() {});
+    List<File>? files = await AppFilePicker().filePicker(FileCategory.image);
+   images.addAll(files);
+    debugPrint(files.length.toString());
+    setState(() {});
   }
 }
+
+class AppFilePicker {
+
+  void initial() {
+    ///request permisstion;
+    ///
+  }
+
+  Future<List<File>> filePicker(FileCategory file, {bool allowMultiFile = true}) async {
+
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+        onFileLoading: (status){
+          debugPrint(status.toString());
+        },
+        type: FileType.custom,
+        allowMultiple: allowMultiFile,
+        withReadStream: true,
+        allowedExtensions: file.getExtensionSupport()
+    );
+    debugPrint('done');
+    if (result != null) {
+      List<File> files = result.paths.map((path) => File(path!)).toList();
+      result.paths.forEach((element) {
+        debugPrint(element);
+      });
+      return files;
+    } else {
+      return [];
+    }
+  }
+}
+
+enum FileCategory{
+  image,
+  video,
+  other
+}
+
+extension FileExtensionSupport on FileCategory{
+
+  static List<String> imageExtensionSupport = ['JPG', 'JPEG'];
+
+  static List<String> videoExtensionSupport = ['mp4'];
+
+  static List<String> otherExtensionSupport = ['pdf'];
+
+  // nhung loai duoi file support;
+  List<String> getExtensionSupport(){
+    switch(this){
+      case FileCategory.image:
+        return imageExtensionSupport;
+      case  FileCategory.video:
+        return videoExtensionSupport;
+      case FileCategory.other:
+        return otherExtensionSupport;
+    }
+  }
+}
+
