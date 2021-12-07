@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:image_social_network/src/border_image.dart';
 import 'package:image_social_network/utils/dimens.dart';
 
@@ -11,7 +10,7 @@ class ImageLocal extends StatefulWidget {
     this.size = 250, Key? key})
       : super(key: key);
 
-  final List<XFile> files;
+  final List<File> files;
 
   final Function(int index) onDelete;
 
@@ -22,7 +21,7 @@ class ImageLocal extends StatefulWidget {
 }
 
 class _ImageSocialNetworkState extends State<ImageLocal> {
-  late List<XFile> urls;
+  late List<File> urls;
 
   @override
   void initState() {

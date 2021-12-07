@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_social_network/self.dart';
@@ -113,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void pickImage() async {
-    List<XFile>? files = await _picker.pickMultiImage();
+    List<File>? files = await _picker.pickMultiImage();
     if (files != null) images.addAll(files);
     debugPrint(files?.length.toString());
     setState(() {});
