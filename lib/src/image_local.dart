@@ -262,6 +262,11 @@ class _ImageSocialNetworkState extends State<ImageLocal> {
       children: [
         Image.file(
           File(widget.files[index].path),
+          frameBuilder: (context, _, percent,check){
+            debugPrint(percent.toString());
+            debugPrint(check.toString());
+            return const SizedBox();
+          },
           alignment: Alignment.center,
           fit: BoxFit.cover,
           width: double.infinity,

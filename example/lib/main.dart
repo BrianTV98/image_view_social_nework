@@ -89,17 +89,17 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                ListView.builder(
-                    itemCount: urls.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return ImageSocialNetwork(
-                        urls: urls[index],
-                      );
-                    }),
+                // ListView.builder(
+                //     itemCount: urls.length,
+                //     shrinkWrap: true,
+                //     physics: const NeverScrollableScrollPhysics(),
+                //     itemBuilder: (context, index) {
+                //       return ImageSocialNetwork(
+                //         urls: urls[index],
+                //       );
+                //     }),
                 ImageLocal(
-                  files: images,
+                  files: [File('/data/user/0/vn.com.acsvn.app_nhg/cache/file_picker/20211206_224350.jpg')],
                   onDelete: (index) {
                     images.removeAt(index);
                     setState(() {});
@@ -115,9 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void pickImage() async {
-    List<File>? files = await _picker.pickMultiImage();
-    if (files != null) images.addAll(files);
-    debugPrint(files?.length.toString());
-    setState(() {});
+    // List<File>? files = await _picker.pickMultiImage();
+    // if (files != null) images.addAll(files);
+    // debugPrint(files?.length.toString());
+    // setState(() {});
   }
 }
